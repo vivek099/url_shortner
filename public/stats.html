@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  </head>
+  <body>
+    <h1>Analytics</h1>
+  </body>
+  <script type="text/javascript">
+    $(function() {
+        $.ajax({
+        url: "http://127.0.0.1:3000/url-mappers",
+        method: "GET",
+        dataType: "json",
+        success: function(data) {
+            var str = "<h1>Analytics</h1>";
+           for(var i= 0; i < data.items.length; i++){
+             str += '<br><b>Long URL</b> : ' + data.items[i].long_url;
+             str += '<br><br><b>Short URL</b> : ' + data.items[i].short_url;
+             str += '<br><br><b>Total Clicks</b> : ' + data.items[i].total_clicks;
+             str += '<br><br><b>Top Countries</b> : ' + data.items[i].top_countries;
+             str += '<br><br><br><hr>'
+           }
+          $("body").html(str);
+        }
+        });
+    });
+  </script>
+</html>
