@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  </head>
+  <body>
+    <h1>Welcome to URL shortner application</h1>
+    <p>Enter your URL here</p>
+    <form action="/url-mappers" method="post" id="my_form">
+        <input type="url" name="long_url" style="width:1000;"/>
+        <input type="submit" name="submit" value="Shorten URL" />
+    </form>
+    <div id="url"></div>
+  </body>
+  <script type="text/javascript">
+    $("#my_form").submit(function(event){
+    	event.preventDefault(); //prevent default action
+    	var post_url = $(this).attr("action"); //get form action url
+    	var request_method = $(this).attr("method"); //get form GET/POST method
+    	var form_data = $(this).serialize(); //Encode form elements for submission
+
+    	$.ajax({
+        type: "POST",
+    		url : post_url,
+    		type: request_method,
+    		data : form_data,
+        success : function(response) {
+          var shortUrl = response.short_url;
+          $("#url").innerHtml = shortUrl;
+          alert('Here is your short URL: ' + shortUrl);
+        }
+    	})
+    });
+  </script>
+</html>
