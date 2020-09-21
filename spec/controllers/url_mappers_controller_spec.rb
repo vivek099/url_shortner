@@ -39,19 +39,10 @@ RSpec.describe UrlMappersController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #index" do
     context 'when request is successful' do
-      it 'redirects to long_url with 200 response code' do
-        get :stats, params: {}
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "GET #stats" do
-    context 'when request is successful' do
-      it 'returns stats of url shortner with 200 response code' do
-        get :stats, params: {}
+      it 'returns list of urls with 200 response code' do
+        get :index, params: {}
         expect(response).to be_successful
       end
     end

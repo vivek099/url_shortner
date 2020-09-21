@@ -39,11 +39,4 @@ class UrlMappersController < ApplicationController
     end
     render json: {items: items}
   end
-
-  def home
-    # render 'url_mappers/_home.html.erb'
-    respond_to do |format|
-     format.html { render :home }
-   end
-  end
 end
